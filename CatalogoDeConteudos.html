@@ -6,6 +6,8 @@
     <title>
         Catálogo de Conteúdos
     </title>
+	<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+	<link href='https://fonts.googleapis.com/css?family=Roboto+Mono' rel='stylesheet'>
 </head>
 
 <div class="container">
@@ -34,18 +36,18 @@
 
 				var imageElement = document.createElement('div');
 				imageElement.classList.add('image');
-				imageElement.innerHTML = `<a href="${item.linkDoConteúdo}"><img src="${item.linkDaImagem}"></img></a>`;
+				imageElement.innerHTML = `<a href="${item.linkDoConteúdo}" target="_blank"><img src="${item.linkDaImagem}"></img></a>`;
 				catalogElement.appendChild(imageElement);	
 
 				
 				var textContent = document.createElement('div');
 				textContent.classList.add('textContent');
 					var titleElement = document.createElement('div');
-					titleElement.innerHTML = `<a href="${item.linkDoConteúdo}"><h3>${item.conteúdo}</h3></a>`;
+					titleElement.innerHTML = `<a href="${item.linkDoConteúdo}" target="_blank"><h3>${item.conteúdo}</h3></a>`;
 					textContent.appendChild(titleElement);
 
 					var descriptionElement = document.createElement('p');
-					descriptionElement.innerHTML = `<a href="${item.linkDoConteúdo}"><p>${item.descrição}</p></a>`;
+					descriptionElement.innerHTML = `<a href="${item.linkDoConteúdo}" target="_blank"><p>${item.descrição}</p></a>`;
 					textContent.appendChild(descriptionElement);
 
 					var tagsElement = document.createElement('p');
@@ -71,7 +73,7 @@
 
 <style>
 	body {
-		font-family: 'Roboto Mono',monospace;
+		font-family: 'Roboto', sans-serif;
 		background-color: #FFFFFF;
 		margin: 0;
 	}
@@ -135,6 +137,7 @@
 	}
 
     .tags {
+		font-family: 'Roboto Mono', monospace;
         color: rgb(132, 132, 132);
 		font-size: 0.8rem;
     }
