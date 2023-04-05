@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<head>
+    <title>
+        Catálogo de Conteúdos
+    </title>
+</head>
+
+<div class="container">
+	<div class="espaçamento"></div>
+	<div id="list"></div>
+</div> 
+
+
+<script>		
+	const list = document.getElementById('list');
+	list.classList.add('catalog');
+	
+	let url = 'https://api.sheety.co/80691042e0dcd7a3696f8c6b01442842/catálogoDeConteúdos/geral';
+	
+	fetch(url)
+	.then((response) => response.json())
+	.then(json => {
+		const data = json;
+		
+		console.log(data.geral);
+		console.log(data.geral[0].conteúdo);
+
+		data.geral.forEach(item => {		
+			var catalogElement = document.createElement('div');
+			catalogElement.classList.add('catalogElement');
+
+				var imageElement = document.createElement('div');
+				imageElement.classList.add('image');
+				imageElement.innerHTML = `<a href="${item.linkDoConteúdo}"><img src="${item.linkDaImagem}"></img></a>`;
+				catalogElement.appendChild(imageElement);	
+
+				
+				var textContent = document.createElement('div');
+				textContent.classList.add('textContent');
+					var titleElement = document.createElement('div');
+					titleElement.innerHTML = `<a href="${item.linkDoConteúdo}"><h3>${item.conteúdo}</h3></a>`;
+					textContent.appendChild(titleElement);
+
+					var descriptionElement = document.createElement('p');
+					descriptionElement.innerHTML = `<a href="${item.linkDoConteúdo}"><p>${item.descrição}</p></a>`;
+					textContent.appendChild(descriptionElement);
+
+					var tagsElement = document.createElement('p');
+					tagsElement.classList.add('tags');
+					
+					item.categoria != "" ? 						tagsElement.innerHTML += item.categoria : null;
+					item.versões != "" ? 						tagsElement.innerHTML += " | " + item.versões : null;
+					item.plataformas != "" ? 					tagsElement.innerHTML += " | " + item.plataformas : null;
+					item.precificação != "" ? 					tagsElement.innerHTML += " | " + item.precificação : null;
+					item.necessárioRegistroParaAcesso != "" ? 	tagsElement.innerHTML += " | " + "Necessário registro para acesso: " + item.necessárioRegistroParaAcesso : null; 
+					item.tamanhoEmDisco != null  ? 				tagsElement.innerHTML += " | " +  item.tamanhoEmDisco : null;
+					
+					textContent.appendChild(tagsElement);
+				catalogElement.appendChild(textContent);
+
+			list.appendChild(catalogElement);
+
+			list.innerHTML += "<hr>";
+		});
+	});
+
+</script>
+
+<style>
+	body {
+		font-family: 'Roboto Mono',monospace;
+		background-color: #FFFFFF;
+		margin: 0;
+	}
+	
+	a {
+		text-decoration: none;
+		color: white;
+	}
+	
+	.container {
+		text-align: left;
+		flex-direction: column;
+		align-items: center;
+		height: 100vh;
+	}
+	
+	.catalog {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		
+		background-color: #1e2336;
+	}
+	
+	.catalogElement {
+		display: flex;
+		flex-direction: row;
+		
+		width: 70%;
+		
+		color: white;
+	}
+	
+	.textContent {
+		width: 70%;
+	}
+	
+	.image {
+	  width: 310px; /* Defina a largura máxima da imagem */
+	  height: 180px; /* Defina a altura máxima da imagem */
+	  overflow: hidden; /* Esconda qualquer conteúdo que ultrapasse a área do contêiner */
+	  display: flex; /* Use o display flex para centralizar a imagem */
+	  justify-content: center; /* Alinhe a imagem horizontalmente no centro */
+	  align-items: center; /* Alinhe a imagem verticalmente no centro */
+	  
+	  padding-right: 2rem;
+	}
+
+	.image img {
+	  width: 100%; /* Faça a largura da imagem ocupar 100% do contêiner */
+	  height: auto; /* Faça a altura da imagem se ajustar automaticamente à largura */
+	  object-fit: cover; /* Cortar a imagem para que preencha todo o contêiner */
+	  aspect-ratio: 16/9; /* Mantenha a proporção 3x2 */
+	}
+
+	hr {
+		border: none; 
+		border-top: 1px solid gray; 
+		width: 70vw; 
+		margin: 3rem 0 3rem 0;
+	}
+
+    .tags {
+        color: rgb(132, 132, 132);
+		font-size: 0.8rem;
+    }
+
+	.espaçamento {
+	  margin: 0 auto;
+	  height: 5rem;
+	  background-color: #1e2336;
+	}
+
+</style>
+
+
+</body>
+</html>
