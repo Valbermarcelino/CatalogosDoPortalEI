@@ -27,9 +27,6 @@
 	.then(json => {
 		const data = json;
 		const catalogo = data.geral;
-		
-		console.log(catalogo);
-		console.log(catalogo[0]);
 
 		catalogo.forEach(item => {		
 			var catalogElement = document.createElement('div');
@@ -43,9 +40,19 @@
 				
 				var textContent = document.createElement('div');
 				textContent.classList.add('textContent');
-					var titleElement = document.createElement('div');
-					titleElement.innerHTML = `<a href="${item.linkDoConteúdo}" target="_blank"><h3>${item.ferramenta}</h3></a>`;
-					textContent.appendChild(titleElement);
+				
+					var lineContainer = document.createElement('div');
+					lineContainer.classList.add('lineContainer');
+						var titleElement = document.createElement('div');
+						titleElement.innerHTML = `<a href="${item.linkDoConteúdo}" target="_blank"><h3>${item.ferramenta}</h3></a>`;
+						lineContainer.appendChild(titleElement);
+						
+						if (item.linkDoTutorial != ""){
+							var tutorialButton = document.createElement('div');
+							tutorialButton.innerHTML = `<a href="${item.linkDoTutorial}" target="_blank"><div class="tutorialButton">Tutorial</div></a>`;
+							lineContainer.appendChild(tutorialButton);
+						}
+					textContent.appendChild(lineContainer);
 
 					var descriptionElement = document.createElement('p');
 					descriptionElement.innerHTML = `<a href="${item.linkDoConteúdo}" target="_blank"><p>${item.descrição}</p></a>`;
@@ -111,6 +118,23 @@
 	
 	.textContent {
 		width: 70%;
+	}
+	
+	.lineContainer {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+	}
+	
+	.tutorialButton {
+		background-color: transparent;
+		border: 2px solid #fff;
+		border-radius: 25px;
+		color: #fff;
+		font-size: 16px;
+		padding: 10px 20px;
+		text-align: center;
 	}
 	
 	.image {
