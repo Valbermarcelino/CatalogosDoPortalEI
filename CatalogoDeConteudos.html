@@ -26,11 +26,12 @@
 	.then((response) => response.json())
 	.then(json => {
 		const data = json;
+		const catalogo = data.geral;
 		
-		console.log(data.geral);
-		console.log(data.geral[0].conteúdo);
+		console.log(catalogo);
+		console.log(catalogo[0]);
 
-		data.geral.forEach(item => {		
+		catalogo.forEach(item => {		
 			var catalogElement = document.createElement('div');
 			catalogElement.classList.add('catalogElement');
 
@@ -109,6 +110,23 @@
 	
 	.textContent {
 		width: 70%;
+	}
+	
+	.lineContainer {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+	}
+	
+	.tutorialButton {
+		background-color: transparent;
+		border: 2px solid #fff;
+		border-radius: 25px;
+		color: #fff;
+		font-size: 16px;
+		padding: 10px 20px;
+		text-align: center;
 	}
 	
 	.image {
