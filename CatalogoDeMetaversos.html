@@ -31,11 +31,15 @@
 		catalogo.forEach(item => {		
 			var catalogElement = document.createElement('div');
 			catalogElement.classList.add('catalogElement');
-
-				var imageElement = document.createElement('div');
-				imageElement.classList.add('image');
-				imageElement.innerHTML = `<a href="${item.linkDoConteúdo}" target="_blank"><img src="${item.linkDaImagem}"></img></a>`;
-				catalogElement.appendChild(imageElement);	
+			
+				function exibirImagem (linkDaImagem){
+					var imageElement = document.createElement('div');
+					imageElement.classList.add('image');
+					imageElement.innerHTML = `<a href="${item.linkDoConteúdo}" target="_blank"><img src="${linkDaImagem}"></img></a>`;
+					catalogElement.appendChild(imageElement);	
+				}
+				exibirImagem(item.linkDaImagem);
+				
 
 				
 				var textContent = document.createElement('div');
