@@ -20,6 +20,47 @@
 	const list = document.getElementById('list');
 	list.classList.add('catalog');
 	
+	item.nome == "true" ? nome = item.nome : null;
+	/*item.videochamada == "true" ? videochamada = item.videochamada : null;
+	item.compartilhamentoDeTela == "true" ? compartilhamentoDeTela = item.compartilhamentoDeTela : null;
+	item.batePapoPrivado == "true" ? batePapoPrivado = item.batePapoPrivado : null;
+	item.batePapoTextual == "true" ? batePapoTextual = item.batePapoTextual : null;
+	item.batePapoEmAudio == "true" ? batePapoEmAudio = item.batePapoEmAudio : null;
+	item.ediçãoDoAmbiente == "true" ? ediçãoDoAmbiente = item.ediçãoDoAmbiente : null;
+	item.criaçãoDeAmbiente == "true" ? criaçãoDeAmbiente = item.criaçãoDeAmbiente : null;
+	item.inserçãoDeImagens == "true" ? inserçãoDeImagens = item.inserçãoDeImagens : null;
+	item.inserçãoDeVideo == "true" ? inserçãoDeVideo = item.inserçãoDeVideo : null;
+	item.inserçãoDeDocumentos == "true" ? inserçãoDeDocumentos = item.inserçãoDeDocumentos : null;
+	item.versãoEmPortuguês == "true" ? versãoEmPortuguês = item.versãoEmPortuguês : null;
+	item.adicionarObjetosTridimensionais == "true" ? adicionarObjetosTridimensionais = item.adicionarObjetosTridimensionais : null;
+	item.adicionarObjetosInterativos == "true" ? adicionarObjetosInterativos = item.adicionarObjetosInterativos : null;
+	item.adicionarLinksEmbutidos == "true" ? adicionarLinksEmbutidos = item.adicionarLinksEmbutidos : null;
+	item.compatívelComVr == "true" ? compatívelComVr = item.compatívelComVr : null;
+	item.multiplataforma == "true" ? multiplataforma = item.multiplataforma : null;
+	
+	ResourcesArray = [ videochamada, compartilhamentoDeTela, batePapoPrivado, batePapoEmAudio, ediçãoDoAmbiente, criaçãoDeAmbiente, criaçãoDeAmbiente, 
+					   inserçãoDeImagens, versãoEmPortuguês, adicionarObjetosTridimensionais, adicionarObjetosInterativos, adicionarLinksEmbutidos, compatívelComVr, multiplataforma ];
+	
+	
+	  "nome": " ILRN Virtual Campus",
+      "videochamada": false,
+      "compartilhamentoDeTela": false,
+      "batePapoPrivado": true,
+      "batePapoTextual": true,
+      "batePapoEmAudio": true,
+      "ediçãoDoAmbiente": true,
+      "criaçãoDeAmbiente": false,
+      "inserçãoDeImagens": false,
+      "inserçãoDeVideo": false,
+      "inserçãoDeDocumentos": false,
+      "versãoEmPortuguês": false,
+      "adicionarObjetosTridimensionais": false,
+      "adicionarObjetosInterativos": false,
+      "adicionarLinksEmbutidos": false,
+      "compatívelComVr": true,
+      "multiplataforma": false,
+      "id": 2*/
+	
 	let url = 'https://api.sheety.co/80691042e0dcd7a3696f8c6b01442842/cat%C3%A1logoDeMetaversos,Caracteriza%C3%A7%C3%A3oDosAmbientesImersivos,DeRaERv/metaversos';
 	
 	fetch(url)
@@ -32,7 +73,7 @@
 			var catalogElement = document.createElement('div');
 			catalogElement.classList.add('catalogElement');
 			
-				function exibirImagem (linkDaImagem){
+				function exibirImagem (linkDaImagem){	
 					var imageElement = document.createElement('div');
 					imageElement.classList.add('image');
 					imageElement.innerHTML = `<a href="${item.linkDoConteúdo}" target="_blank"><img src="${linkDaImagem}"></img></a>`;
@@ -40,7 +81,33 @@
 				}
 				exibirImagem(item.linkDaImagem);
 				
-
+				item.plataformas != "" ? 					plataformas = item.plataformas : null;
+				item.precificação != "" ? 					precificação =  item.precificação : null;
+				item.necessárioRegistroParaAcesso != "" ? 	necessárioRegistroParaAcesso = "Necessário registro para acesso: " + item.necessárioRegistroParaAcesso : null; 
+				item.máximoDeUsuáriosGratuito != "" ? 		máximoDeUsuáriosGratuito = "máximo de usuários gratuito: " + item.máximoDeUsuáriosGratuito : null; 
+				item.máximoDeUsuáriosPago != "" ? 			máximoDeUsuáriosPago =  "máximo de usuários pago: " + item.máximoDeUsuáriosPago : null; 
+				item.permiteOutrosServidores != "" ? 		permiteOutrosServidores = "permite outros servidores: " + item.permiteOutrosServidores : null; 
+				item.compatívelComVr != "" ? 				compatívelComVr = "compatível com VR: " + item.compatívelComVr : null; 
+				item.tamanhoEmDisco != null  ? 				tamanhoEmDisco =  item.tamanhoEmDisco : null;
+			
+				const tagsArray = [ item.plataformas, necessárioRegistroParaAcesso, máximoDeUsuáriosGratuito, máximoDeUsuáriosPago, permiteOutrosServidores, compatívelComVr, item.tamanhoEmDisco ];
+				
+				console.log(tagsArray);
+				
+				function exbirTexto (tagsArray) {
+					var tagsElement = document.createElement('p');
+					tagsElement.classList.add('tags');
+					tagsArray.forEach((tag, index) => {
+						if(tag != null){
+							if (index === tagsArray.length - 1) {
+								tagsElement.innerHTML += tag;
+							} else {
+								tagsElement.innerHTML += tag + " | ";
+							}
+						}
+					});
+					textContent.appendChild(tagsElement);
+				}
 				
 				var textContent = document.createElement('div');
 				textContent.classList.add('textContent');
@@ -55,18 +122,13 @@
 					var tagsElement = document.createElement('p');
 					tagsElement.classList.add('tags');
 					
-					item.categoria != "" ? 						tagsElement.innerHTML += item.categoria : null;
-					item.versões != "" ? 						tagsElement.innerHTML += " | " + item.versões : null;
-					item.plataformas != "" ? 					tagsElement.innerHTML += " | " + item.plataformas : null;
-					item.precificação != "" ? 					tagsElement.innerHTML += " | " + item.precificação : null;
-					item.necessárioRegistroParaAcesso != "" ? 	tagsElement.innerHTML += " | " + "Necessário registro para acesso: " + item.necessárioRegistroParaAcesso : null; 
-					item.máximoDeUsuáriosGratuito != "" ? 		tagsElement.innerHTML += " | " + "máximo de usuários gratuito: " + item.máximoDeUsuáriosGratuito : null; 
-					item.máximoDeUsuáriosPago != "" ? 			tagsElement.innerHTML += " | " + "máximo de usuários pago: " + item.máximoDeUsuáriosPago : null; 
-					item.permiteOutrosServidores != "" ? 		tagsElement.innerHTML += " | " + "permite outros servidores: " + item.permiteOutrosServidores : null; 
-					item.compatívelComVr != "" ? 				tagsElement.innerHTML += " | " + "compatível com VR: " + item.compatívelComVr : null; 
-					item.tamanhoEmDisco != null  ? 				tagsElement.innerHTML += " | " +  item.tamanhoEmDisco : null;
+					
+					
+					
 					
 					textContent.appendChild(tagsElement);
+					
+					exbirTexto(tagsArray);
 				catalogElement.appendChild(textContent);
 
 			list.appendChild(catalogElement);
