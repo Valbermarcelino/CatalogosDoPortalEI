@@ -20,46 +20,46 @@
 	const list = document.getElementById('list');
 	list.classList.add('catalog');
 	
-	item.nome == "true" ? nome = item.nome : null;
-	/*item.videochamada == "true" ? videochamada = item.videochamada : null;
-	item.compartilhamentoDeTela == "true" ? compartilhamentoDeTela = item.compartilhamentoDeTela : null;
-	item.batePapoPrivado == "true" ? batePapoPrivado = item.batePapoPrivado : null;
-	item.batePapoTextual == "true" ? batePapoTextual = item.batePapoTextual : null;
-	item.batePapoEmAudio == "true" ? batePapoEmAudio = item.batePapoEmAudio : null;
-	item.ediçãoDoAmbiente == "true" ? ediçãoDoAmbiente = item.ediçãoDoAmbiente : null;
-	item.criaçãoDeAmbiente == "true" ? criaçãoDeAmbiente = item.criaçãoDeAmbiente : null;
-	item.inserçãoDeImagens == "true" ? inserçãoDeImagens = item.inserçãoDeImagens : null;
-	item.inserçãoDeVideo == "true" ? inserçãoDeVideo = item.inserçãoDeVideo : null;
-	item.inserçãoDeDocumentos == "true" ? inserçãoDeDocumentos = item.inserçãoDeDocumentos : null;
-	item.versãoEmPortuguês == "true" ? versãoEmPortuguês = item.versãoEmPortuguês : null;
-	item.adicionarObjetosTridimensionais == "true" ? adicionarObjetosTridimensionais = item.adicionarObjetosTridimensionais : null;
-	item.adicionarObjetosInterativos == "true" ? adicionarObjetosInterativos = item.adicionarObjetosInterativos : null;
-	item.adicionarLinksEmbutidos == "true" ? adicionarLinksEmbutidos = item.adicionarLinksEmbutidos : null;
-	item.compatívelComVr == "true" ? compatívelComVr = item.compatívelComVr : null;
-	item.multiplataforma == "true" ? multiplataforma = item.multiplataforma : null;
+	let ResourcesArray = [];
 	
-	ResourcesArray = [ videochamada, compartilhamentoDeTela, batePapoPrivado, batePapoEmAudio, ediçãoDoAmbiente, criaçãoDeAmbiente, criaçãoDeAmbiente, 
-					   inserçãoDeImagens, versãoEmPortuguês, adicionarObjetosTridimensionais, adicionarObjetosInterativos, adicionarLinksEmbutidos, compatívelComVr, multiplataforma ];
+	let urlRecursos = 'https://api.sheety.co/80691042e0dcd7a3696f8c6b01442842/catálogoDeMetaversos,CaracterizaçãoDosAmbientesImersivos,DeRaERv/recursos';
 	
+	fetch(urlRecursos)
+	.then((response) => response.json())
+	.then(json => {
+		console.log(json.recursos);
+		const recursos = json.recursos;
+		
+		console.log(recursos);
+		
+		recursos.forEach(item => {
+
+			item.nome == "true" ? nome = item.nome : null;
+			item.videochamada == "true" ? videochamada = "video chamada" : null;
+			item.compartilhamentoDeTela == "true" ? compartilhamentoDeTela = "compartilhamento de tela" : null;
+			item.batePapoPrivado == "true" ? batePapoPrivado = "bate papo privado" : null;
+			item.batePapoTextual == "true" ? batePapoTextual = "bate Papo Textual" : null;
+			item.batePapoEmAudio == "true" ? batePapoEmAudio = "bate Papo Em Audio" : null;
+			item.ediçãoDoAmbiente == "true" ? ediçãoDoAmbiente = "ediçãoDoAmbiente" : null;
+			item.criaçãoDeAmbiente == "true" ? criaçãoDeAmbiente = "criaçãoDeAmbiente" : null;
+			item.inserçãoDeImagens == "true" ? inserçãoDeImagens = "inserçãoDeImagens" : null;
+			item.inserçãoDeVideo == "true" ? inserçãoDeVideo = "inserçãoDeVideo" : null;
+			item.inserçãoDeDocumentos == "true" ? inserçãoDeDocumentos = "inserçãoDeDocumentos" : null;
+			item.versãoEmPortuguês == "true" ? versãoEmPortuguês = "versãoEmPortuguês" : null;
+			item.adicionarObjetosTridimensionais == "true" ? adicionarObjetosTridimensionais = "adicionarObjetosTridimensionais" : null;
+			item.adicionarObjetosInterativos == "true" ? adicionarObjetosInterativos = "adicionarObjetosInterativos" : null;
+			item.adicionarLinksEmbutidos == "true" ? adicionarLinksEmbutidos = "adicionarLinksEmbutidos" : null;
+			item.compatívelComVr == "true" ? compatívelComVr = "compatívelComVr" : null;
+			item.multiplataforma == "true" ? multiplataforma = "multiplataforma" : null;
+			
+			ResourcesArray.push(compartilhamentoDeTela);
+			ResourcesArray.push([videochamada, compartilhamentoDeTela, batePapoPrivado, batePapoEmAudio, ediçãoDoAmbiente, criaçãoDeAmbiente, criaçãoDeAmbiente, 
+							   inserçãoDeImagens, versãoEmPortuguês, adicionarObjetosTridimensionais, adicionarObjetosInterativos, adicionarLinksEmbutidos, compatívelComVr, multiplataforma]);
+			console.log(ResourcesArray);
+		});
+	});
 	
-	  "nome": " ILRN Virtual Campus",
-      "videochamada": false,
-      "compartilhamentoDeTela": false,
-      "batePapoPrivado": true,
-      "batePapoTextual": true,
-      "batePapoEmAudio": true,
-      "ediçãoDoAmbiente": true,
-      "criaçãoDeAmbiente": false,
-      "inserçãoDeImagens": false,
-      "inserçãoDeVideo": false,
-      "inserçãoDeDocumentos": false,
-      "versãoEmPortuguês": false,
-      "adicionarObjetosTridimensionais": false,
-      "adicionarObjetosInterativos": false,
-      "adicionarLinksEmbutidos": false,
-      "compatívelComVr": true,
-      "multiplataforma": false,
-      "id": 2*/
+	console.log(ResourcesArray);
 	
 	let url = 'https://api.sheety.co/80691042e0dcd7a3696f8c6b01442842/cat%C3%A1logoDeMetaversos,Caracteriza%C3%A7%C3%A3oDosAmbientesImersivos,DeRaERv/metaversos';
 	
@@ -94,7 +94,7 @@
 				
 				console.log(tagsArray);
 				
-				function exbirTexto (tagsArray) {
+				function tagsText (tagsArray) {
 					var tagsElement = document.createElement('p');
 					tagsElement.classList.add('tags');
 					tagsArray.forEach((tag, index) => {
@@ -122,13 +122,11 @@
 					var tagsElement = document.createElement('p');
 					tagsElement.classList.add('tags');
 					
-					
-					
-					
-					
 					textContent.appendChild(tagsElement);
 					
-					exbirTexto(tagsArray);
+					tagsText(tagsArray);
+					console.log(ResourcesArray);
+
 				catalogElement.appendChild(textContent);
 
 			list.appendChild(catalogElement);
