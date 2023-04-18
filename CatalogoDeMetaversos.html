@@ -29,34 +29,38 @@
 	.then(json => {
 		console.log(json.recursos);
 		const recursos = json.recursos;
-
+		
+		//console.log(recursos);
+	
 		recursos.forEach(item => {
-
-			item.nome == "true" ? nome = item.nome : null;
-			item.videochamada == "true" ? videochamada = "video chamada" : null;
-			item.compartilhamentoDeTela == "true" ? compartilhamentoDeTela = "compartilhamento de tela" : null;
-			item.batePapoPrivado == "true" ? batePapoPrivado = "bate papo privado" : null;
-			item.batePapoTextual == "true" ? batePapoTextual = "bate Papo Textual" : null;
-			item.batePapoEmAudio == "true" ? batePapoEmAudio = "bate Papo Em Audio" : null;
-			item.ediçãoDoAmbiente == "true" ? ediçãoDoAmbiente = "ediçãoDoAmbiente" : null;
-			item.criaçãoDeAmbiente == "true" ? criaçãoDeAmbiente = "criaçãoDeAmbiente" : null;
-			item.inserçãoDeImagens == "true" ? inserçãoDeImagens = "inserçãoDeImagens" : null;
-			item.inserçãoDeVideo == "true" ? inserçãoDeVideo = "inserçãoDeVideo" : null;
-			item.inserçãoDeDocumentos == "true" ? inserçãoDeDocumentos = "inserçãoDeDocumentos" : null;
-			item.versãoEmPortuguês == "true" ? versãoEmPortuguês = "versãoEmPortuguês" : null;
-			item.adicionarObjetosTridimensionais == "true" ? adicionarObjetosTridimensionais = "adicionarObjetosTridimensionais" : null;
-			item.adicionarObjetosInterativos == "true" ? adicionarObjetosInterativos = "adicionarObjetosInterativos" : null;
-			item.adicionarLinksEmbutidos == "true" ? adicionarLinksEmbutidos = "adicionarLinksEmbutidos" : null;
-			item.compatívelComVr == "true" ? compatívelComVr = "compatívelComVr" : null;
-			item.multiplataforma == "true" ? multiplataforma = "multiplataforma" : null;
+			let nome, videochamada, compartilhamentoDeTela, batePapoPrivado, batePapoTextual, batePapoEmAudio, ediçãoDoAmbiente, criaçãoDeAmbiente, inserçãoDeImagens, inserçãoDeVideo, inserçãoDeDocumentos, versãoEmPortuguês, adicionarObjetosTridimensionais, adicionarObjetosInterativos, adicionarLinksEmbutidos, compatívelComVr, multiplataforma;				
 			
-			ResourcesArray = [ videochamada, compartilhamentoDeTela, batePapoPrivado, batePapoEmAudio, ediçãoDoAmbiente, criaçãoDeAmbiente, criaçãoDeAmbiente, 
-							   inserçãoDeImagens, versãoEmPortuguês, adicionarObjetosTridimensionais, adicionarObjetosInterativos, adicionarLinksEmbutidos, compatívelComVr, multiplataforma ];
-			console.log(ResourcesArray);
+			item.nome == true ? nome = item.nome : null;
+			item.videochamada == true ? videochamada = "video chamada" : null;
+			item.compartilhamentoDeTela == true ? compartilhamentoDeTela = "compartilhamento de tela" : null;
+			item.batePapoPrivado == true ? batePapoPrivado = "bate papo privado" : null;
+			item.batePapoTextual == true ? batePapoTextual = "bate Papo Textual" : null;
+			item.batePapoEmAudio == true ? batePapoEmAudio = "bate Papo Em Audio" : null;
+			item.ediçãoDoAmbiente == true ? ediçãoDoAmbiente = "ediçãoDoAmbiente" : null;
+			item.criaçãoDeAmbiente == true ? criaçãoDeAmbiente = "criaçãoDeAmbiente" : null;
+			item.inserçãoDeImagens == true ? inserçãoDeImagens = "inserçãoDeImagens" : null;
+			item.inserçãoDeVideo == true ? inserçãoDeVideo = "inserçãoDeVideo" : null;
+			item.inserçãoDeDocumentos == true ? inserçãoDeDocumentos = "inserçãoDeDocumentos" : null;
+			item.versãoEmPortuguês == true ? versãoEmPortuguês = "versãoEmPortuguês" : null;
+			item.adicionarObjetosTridimensionais == true ? adicionarObjetosTridimensionais = "adicionarObjetosTridimensionais" : null;
+			item.adicionarObjetosInterativos == true ? adicionarObjetosInterativos = "adicionarObjetosInterativos" : null;
+			item.adicionarLinksEmbutidos == true ? adicionarLinksEmbutidos = "adicionarLinksEmbutidos" : null;
+			item.compatívelComVr == true ? compatívelComVr = "compatívelComVr" : null;
+			item.multiplataforma == true ? multiplataforma = "multiplataforma" : null;
+			
+			//ResourcesArray.push(compartilhamentoDeTela);
+			ResourcesArray = [videochamada, compartilhamentoDeTela, batePapoPrivado, batePapoEmAudio, ediçãoDoAmbiente, criaçãoDeAmbiente, criaçãoDeAmbiente, 
+								inserçãoDeImagens, versãoEmPortuguês, adicionarObjetosTridimensionais, adicionarObjetosInterativos, adicionarLinksEmbutidos, compatívelComVr, multiplataforma];
+			//console.log(ResourcesArray);
 		});
 	});
 	
-	console.log(ResourcesArray);
+	//console.log(ResourcesArray);
 	
 	let url = 'https://api.sheety.co/80691042e0dcd7a3696f8c6b01442842/cat%C3%A1logoDeMetaversos,Caracteriza%C3%A7%C3%A3oDosAmbientesImersivos,DeRaERv/metaversos';
 	
@@ -89,7 +93,7 @@
 			
 				const tagsArray = [ item.plataformas, necessárioRegistroParaAcesso, máximoDeUsuáriosGratuito, máximoDeUsuáriosPago, permiteOutrosServidores, compatívelComVr, item.tamanhoEmDisco ];
 				
-				console.log(tagsArray);
+				//console.log(tagsArray);
 				
 				function tagsText (tagsArray) {
 					var tagsElement = document.createElement('p');
@@ -122,6 +126,8 @@
 					textContent.appendChild(tagsElement);
 					
 					tagsText(tagsArray);
+					tagsText(ResourcesArray);
+					
 					console.log(ResourcesArray);
 
 				catalogElement.appendChild(textContent);
@@ -129,6 +135,8 @@
 			list.appendChild(catalogElement);
 
 			list.innerHTML += "<hr>";
+			
+			//console.log(ResourcesArray);
 		});
 	});
 
