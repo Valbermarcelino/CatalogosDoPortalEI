@@ -29,9 +29,7 @@
 	.then(json => {
 		console.log(json.recursos);
 		const recursos = json.recursos;
-		
-		console.log(recursos);
-		
+
 		recursos.forEach(item => {
 
 			item.nome == "true" ? nome = item.nome : null;
@@ -52,9 +50,8 @@
 			item.compatívelComVr == "true" ? compatívelComVr = "compatívelComVr" : null;
 			item.multiplataforma == "true" ? multiplataforma = "multiplataforma" : null;
 			
-			ResourcesArray.push(compartilhamentoDeTela);
-			ResourcesArray.push([videochamada, compartilhamentoDeTela, batePapoPrivado, batePapoEmAudio, ediçãoDoAmbiente, criaçãoDeAmbiente, criaçãoDeAmbiente, 
-							   inserçãoDeImagens, versãoEmPortuguês, adicionarObjetosTridimensionais, adicionarObjetosInterativos, adicionarLinksEmbutidos, compatívelComVr, multiplataforma]);
+			ResourcesArray = [ videochamada, compartilhamentoDeTela, batePapoPrivado, batePapoEmAudio, ediçãoDoAmbiente, criaçãoDeAmbiente, criaçãoDeAmbiente, 
+							   inserçãoDeImagens, versãoEmPortuguês, adicionarObjetosTridimensionais, adicionarObjetosInterativos, adicionarLinksEmbutidos, compatívelComVr, multiplataforma ];
 			console.log(ResourcesArray);
 		});
 	});
