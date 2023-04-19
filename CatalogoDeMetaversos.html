@@ -54,8 +54,8 @@
 			item.multiplataforma == true ? multiplataforma = "multiplataforma" : null;
 			
 			//ResourcesArray.push(compartilhamentoDeTela);
-			ResourcesArray = [videochamada, compartilhamentoDeTela, batePapoPrivado, batePapoEmAudio, ediçãoDoAmbiente, criaçãoDeAmbiente, criaçãoDeAmbiente, 
-								inserçãoDeImagens, versãoEmPortuguês, adicionarObjetosTridimensionais, adicionarObjetosInterativos, adicionarLinksEmbutidos, compatívelComVr, multiplataforma];
+			ResourcesArray.push([videochamada, compartilhamentoDeTela, batePapoPrivado, batePapoEmAudio, ediçãoDoAmbiente, criaçãoDeAmbiente, criaçãoDeAmbiente, 
+								inserçãoDeImagens, versãoEmPortuguês, adicionarObjetosTridimensionais, adicionarObjetosInterativos, adicionarLinksEmbutidos, compatívelComVr, multiplataforma]);
 			//console.log(ResourcesArray);
 		});
 	});
@@ -70,7 +70,7 @@
 		const data = json;
 		const catalogo = data.metaversos;
 
-		catalogo.forEach(item => {		
+		catalogo.forEach((item, index) => {		
 			var catalogElement = document.createElement('div');
 			catalogElement.classList.add('catalogElement');
 			
@@ -126,9 +126,7 @@
 					textContent.appendChild(tagsElement);
 					
 					tagsText(tagsArray);
-					tagsText(ResourcesArray);
-					
-					console.log(ResourcesArray);
+					tagsText(ResourcesArray[index]);
 
 				catalogElement.appendChild(textContent);
 
