@@ -13,10 +13,10 @@
 <div class="container">
 	<div class="espaçamento"></div>
 	<div class="containerButtons">
-		<div class="choice"><a href="CatalogoDeConteudos.html" class="button" target="_blank" rel="noopener noreferrer">Conteúdos</a></div>
-		<div class="choice"><a href="#" class="button" target="_blank" rel="noopener noreferrer">Metaversos</a></div>
-		<div class="choice"><a href="#" class="button" target="_blank" rel="noopener noreferrer">Ferramentas</a></div>
-		<div class="choice"><a href="#" class="button" target="_blank" rel="noopener noreferrer">Laboratórios Virtuais</a></div>
+		<button class="button" id="button1">Conteúdos</button>
+		<button class="button" id="button2">Metaversos</button>
+		<button class="button" id="button3">Ferramentas</button>
+		<button class="button" id="button4">Laboratórios Virtuais</button>
 	</div>
 	<div class="espaçamento"></div>
 	<div id="list"></div>
@@ -24,58 +24,87 @@
 
 
 <script>		
+	const buttons = document.querySelectorAll('.button');
+	
 	const list = document.getElementById('list');
 	list.classList.add('catalog');
 	
-	let url = 'https://snowy-feather-log.glitch.me/conteudos';
+	// Mapeamento dos IDs dos botões para funções
+    const buttonFunctions = {
+      button1: fetchData1,
+      button2: fetchData2,
+      button3: fetchData3,
+      button4: fetchData4
+    };
 	
-	fetch(url)
-	.then((response) => response.json())
-	.then(json => {
-		const data = json;
-		const catalogo = data;
-		
-		console.log(catalogo);
-		console.log(catalogo[0]);
+	function updateList(data) {
+      // Limpa a lista atual
+      list.innerHTML = '';
+      
+      // Atualiza a lista com os dados recebidos
+      data.forEach(item => {
+        const listItem = document.createElement('li');
+        listItem.classList.add('list-item');
+        listItem.textContent = item;
+        list.appendChild(listItem);
+      });
+    }
+	
+	
+	function fetchConteudos(){
+		let url = 'https://snowy-feather-log.glitch.me/conteudos';
 
-		catalogo.forEach(item => {		
-			var catalogElement = document.createElement('div');
-			catalogElement.classList.add('catalogElement');
+		fetch(url)
+		.then((response) => response.json())
+		.then(json => {
+			const data = json;
+			const catalogo = data;
+			
+			console.log(catalogo);
+			console.log(catalogo[0]);
 
-				var imageElement = document.createElement('div');
-				imageElement.classList.add('image');
-				imageElement.innerHTML = `<a href="${item.linkDoConteúdo}" target="_blank"><img src="${item.linkDaImagem}"></img></a>`;
-				catalogElement.appendChild(imageElement);	
+			catalogo.forEach(item => {		
+				var catalogElement = document.createElement('div');
+				catalogElement.classList.add('catalogElement');
 
-				
-				var textContent = document.createElement('div');
-				textContent.classList.add('textContent');
-					var titleElement = document.createElement('div');
-					titleElement.innerHTML = `<a href="${item.linkDoConteúdo}" target="_blank"><h3>${item.conteúdo}</h3></a>`;
-					textContent.appendChild(titleElement);
+					var imageElement = document.createElement('div');
+					imageElement.classList.add('image');
+					imageElement.innerHTML = `<a href="${item.linkDoConteúdo}" target="_blank"><img src="${item.linkDaImagem}"></img></a>`;
+					catalogElement.appendChild(imageElement);	
 
-					var descriptionElement = document.createElement('p');
-					descriptionElement.innerHTML = `<a href="${item.linkDoConteúdo}" target="_blank"><p>${item.descrição}</p></a>`;
-					textContent.appendChild(descriptionElement);
-
-					var tagsElement = document.createElement('p');
-					tagsElement.classList.add('tags');
 					
-					item.categoria != "" ? 						tagsElement.innerHTML += item.categoria : null;
-					item.versões != "" ? 						tagsElement.innerHTML += " | " + item.versões : null;
-					item.plataformas != "" ? 					tagsElement.innerHTML += " | " + item.plataformas : null;
-					item.precificação != "" ? 					tagsElement.innerHTML += " | " + item.precificação : null;
-					item.necessárioRegistroParaAcesso != "" ? 	tagsElement.innerHTML += " | " + "Necessário registro para acesso: " + item.necessárioRegistroParaAcesso : null; 
-					item.tamanhoEmDisco != null  ? 				tagsElement.innerHTML += " | " +  item.tamanhoEmDisco : null;
-					
-					textContent.appendChild(tagsElement);
-				catalogElement.appendChild(textContent);
+					var textContent = document.createElement('div');
+					textContent.classList.add('textContent');
+						var titleElement = document.createElement('div');
+						titleElement.innerHTML = `<a href="${item.linkDoConteúdo}" target="_blank"><h3>${item.conteúdo}</h3></a>`;
+						textContent.appendChild(titleElement);
 
-			list.appendChild(catalogElement);
+						var descriptionElement = document.createElement('p');
+						descriptionElement.innerHTML = `<a href="${item.linkDoConteúdo}" target="_blank"><p>${item.descrição}</p></a>`;
+						textContent.appendChild(descriptionElement);
 
-			list.innerHTML += "<hr>";
+						var tagsElement = document.createElement('p');
+						tagsElement.classList.add('tags');
+						
+						item.categoria != "" ? 						tagsElement.innerHTML += item.categoria : null;
+						item.versões != "" ? 						tagsElement.innerHTML += " | " + item.versões : null;
+						item.plataformas != "" ? 					tagsElement.innerHTML += " | " + item.plataformas : null;
+						item.precificação != "" ? 					tagsElement.innerHTML += " | " + item.precificação : null;
+						item.necessárioRegistroParaAcesso != "" ? 	tagsElement.innerHTML += " | " + "Necessário registro para acesso: " + item.necessárioRegistroParaAcesso : null; 
+						item.tamanhoEmDisco != null  ? 				tagsElement.innerHTML += " | " +  item.tamanhoEmDisco : null;
+						
+						textContent.appendChild(tagsElement);
+					catalogElement.appendChild(textContent);
+
+				list.appendChild(catalogElement);
+
+				list.innerHTML += "<hr>";
+			});
 		});
-	});
+	}
+	
+	function fetchMetaversos(){}
+	
 
 </script>
 
