@@ -4,13 +4,20 @@
 
 <head>
     <title>
-        Catálogo de Conteúdos
+        Catálogo
     </title>
 	<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
 	<link href='https://fonts.googleapis.com/css?family=Roboto+Mono' rel='stylesheet'>
 </head>
 
 <div class="container">
+	<div class="espaçamento"></div>
+	<div class="containerButtons">
+		<div class="choice"><a href="CatalogoDeConteudos.html" class="button" target="_blank" rel="noopener noreferrer">Conteúdos</a></div>
+		<div class="choice"><a href="#" class="button" target="_blank" rel="noopener noreferrer">Metaversos</a></div>
+		<div class="choice"><a href="#" class="button" target="_blank" rel="noopener noreferrer">Ferramentas</a></div>
+		<div class="choice"><a href="#" class="button" target="_blank" rel="noopener noreferrer">Laboratórios Virtuais</a></div>
+	</div>
 	<div class="espaçamento"></div>
 	<div id="list"></div>
 </div> 
@@ -75,7 +82,7 @@
 <style>
 	body {
 		font-family: 'Roboto', sans-serif;
-		background-color: #FFFFFF;
+		background-color: #1e2336;
 		margin: 0;
 	}
 	
@@ -83,6 +90,27 @@
 		text-decoration: none;
 		color: white;
 	}
+	
+	.containerButtons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+	  flex-direction: column;
+    }
+    
+    .button {
+	  width: 70vw;
+      display: inline-block;
+      padding: 10px;
+      margin: 5px;
+      border: 2px solid #fff;
+      border-radius: 20px;
+      text-align: center;
+      text-decoration: none;
+      color: #fff;
+      font-weight: bold;
+      background-color: transparent;
+    }
 	
 	.container {
 		text-align: left;
