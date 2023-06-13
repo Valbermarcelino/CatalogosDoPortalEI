@@ -204,13 +204,15 @@ const buttons = document.querySelectorAll('.button');
 	function fetchFerramentas(){
 		list.innerHTML = '';
 		
-		let url = 'https://api.sheety.co/80691042e0dcd7a3696f8c6b01442842/catálogoDeFerramentas/geral';
+		let url = 'https://snowy-feather-log.glitch.me/ferramentas';
 	
 		fetch(url)
 		.then((response) => response.json())
 		.then(json => {
 			const data = json;
-			const catalogo = data.geral;
+			const catalogo = data;
+
+            console.log(catalogo);
 
 			catalogo.forEach(item => {		
 				var catalogElement = document.createElement('div');
@@ -245,14 +247,8 @@ const buttons = document.querySelectorAll('.button');
 						var tagsElement = document.createElement('p');
 						tagsElement.classList.add('tags');
 						
-						item.categoria != "" ? 						tagsElement.innerHTML += item.categoria : null;
-						item.versões != "" ? 						tagsElement.innerHTML += " | " + item.versões : null;
-						item.plataformas != "" ? 					tagsElement.innerHTML += " | " + item.plataformas : null;
-						item.precificação != "" ? 					tagsElement.innerHTML += " | " + item.precificação : null;
-						item.necessárioRegistroParaAcesso != "" ? 	tagsElement.innerHTML += " | " + "Necessário registro para acesso: " + item.necessárioRegistroParaAcesso : null; 
-						item.compatívelComVr != "" ? 				tagsElement.innerHTML += " | " + "compatível com VR: " + item.compatívelComVr : null; 
-						item.tamanhoEmDisco != null  ? 				tagsElement.innerHTML += " | " +  item.tamanhoEmDisco : null;
-						
+						tagsElement.innerHTML += item.tags;
+
 						textContent.appendChild(tagsElement);
 					catalogElement.appendChild(textContent);
 
@@ -266,13 +262,15 @@ const buttons = document.querySelectorAll('.button');
 	function fetchLaboratorios(){
 		list.innerHTML = '';
 	
-		let url = 'https://api.sheety.co/80691042e0dcd7a3696f8c6b01442842/laboratóriosVirtuais/geral';
+		let url = 'https://snowy-feather-log.glitch.me/laboratorios';
 	
 		fetch(url)
 		.then((response) => response.json())
 		.then(json => {
 			const data = json;
-			const catalogo = data.geral;
+			const catalogo = data;
+
+            console.log(catalogo);
 
 			catalogo.forEach(item => {		
 				var catalogElement = document.createElement('div');
@@ -297,9 +295,8 @@ const buttons = document.querySelectorAll('.button');
 						var tagsElement = document.createElement('p');
 						tagsElement.classList.add('tags');
 						
-						item.tema != "" ? 						tagsElement.innerHTML += item.tema : null;
-						item.versões != "" ? 						tagsElement.innerHTML += " | " + item.versões : null;
-						
+						tagsElement.innerHTML += item.tags;
+
 						textContent.appendChild(tagsElement);
 					catalogElement.appendChild(textContent);
 
@@ -310,5 +307,5 @@ const buttons = document.querySelectorAll('.button');
 		});
 	}
 	
-	// Simula o clique no botão 1 ao abrir a página
+	// Simula o clique no botão 1 ao abrir a página 
     fetchConteudos();
